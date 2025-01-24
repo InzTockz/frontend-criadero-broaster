@@ -1,56 +1,127 @@
-<div #main style="display: flex; flex-direction: column; gap: 50px;">
-  <div style="display: flex; flex-direction: row; justify-content: center;">
-    <div #menu style="display: flex; justify-content: center;" class="rounded-full bg-black p-3 mt-3">
-      <menu style="display: flex; flex-direction: row; gap: 15px; padding-top: 2%;" >
-        <a href="#"><p class="font-mono text-white hover:text-red-700 text-lg font-semibold tracking-wide">Inicio</p></a>
-        <a href="#"><p class="font-mono text-white hover:text-red-700 text-lg font-semibold tracking-wide">Gallinas</p></a>
-        <a href="#"><p class="font-mono text-white hover:text-red-700 text-lg font-semibold tracking-wide">Contactame</p></a>
-      </menu>
-    </div>
+<div #main style="display: flex; flex-direction: column;">
+  <div class="mb-14">
+    <header class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2">
+      <nav class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center bg- items-center backdrop-blur-md">
+        <a href="#" class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500">Inicio</a>
+        <a href="#seccion" class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500">Gallinas</a>
+        <a class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500">Contactame</a>
+        <div class="relative ml-1 mr-1">
+          <button id="theme-toggle-btn" (click)="toggleMenu($event)"
+            class="appearance-none border-none flex hover:scale-125 transition">
+            <span class="sr-only">Elige el tema</span>
+            <svg id="light" class="theme-toggle-icon size-5 transition-all" width="24" height="24"
+              viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+              stroke-linejoin="round" style="scale: 0;">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+              <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7">
+              </path>
+            </svg>
+            <svg id="dark" class="theme-toggle-icon absolute size-5 transition-all" width="24" height="24"
+              viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+              stroke-linejoin="round" style="scale: 1;">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+            </svg>
+            <svg id="system" class="theme-toggle-icon absolute size-5 transition-all" width="24" height="24"
+              viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+              stroke-linejoin="round" style="scale: 0;">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M3 5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-10z"></path>
+              <path d="M7 20h10"></path>
+              <path d="M9 16v4"></path>
+              <path d="M15 16v4"></path>
+            </svg>
+          </button>
+          <div #themesMenu id="themes-menu"
+            class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md">
+            <ul>
+              <li class="themes-menu-option px-2 py-1.5 cursor-default hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm"
+                (click)="setTheme('light')"> Light </li>
+              <li class="themes-menu-option px-2 py-1.5 cursor-default hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm"
+                (click)="setTheme('dark')"> Dark </li>
+              <li class="themes-menu-option px-2 py-1.5 cursor-default hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm"
+                (click)="setTheme('system')"> System </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
   </div>
-  <div #slider >
-        <swiper-container slides-per-view="1" speed="400" loop="true" navigation="true" lazy="true" autoplay-delay="3000"
-        effect="fade">
-          <swiper-slide><img src="/images/1.jpg"></swiper-slide>
-          <swiper-slide><img src="/images/2.jpg"></swiper-slide>
-          <swiper-slide><img src="/images/3.jpg"></swiper-slide>
-        </swiper-container>
+  <div id="main" class="mt-8">
+    <swiper-container slides-per-view="1" speed="400" loop="true" navigation="true" lazy="true" autoplay-delay="3000"
+      effect="fade">
+      <swiper-slide><img src="/images/default.png"></swiper-slide>
+      <swiper-slide><img src="/images/default.png"></swiper-slide>
+      <swiper-slide><img src="/images/default.png"></swiper-slide>
+    </swiper-container>
   </div>
-  <div #seccion>
+  <div id="seccion" class="mt-16">
     <div style="display: flex; flex-direction: column; align-items: center; gap: 100px;">
-      <div style="display: flex; flex-direction: row; justify-content: space-between; width: 85%;">
-        <div #img1 style="display: flex; flex-direction: column; gap: 10px;">
-          <div ><img src="/images/pollos/pollo1.jpg" class="rounded-full shadow-2xl" width="200px"></div>
-          <div class="text-center"><span>Pollo Brahma Perdiz Dorado</span></div>
+      <div class="flex flex-row justify-around w-4/5">
+        <div #img1 style="display: flex; flex-direction: column; gap: 10px;"
+          class="relative transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
+          <div><img src="/images/default.png" class="rounded-full shadow-2xl" width="250px"></div>
+          <div class="absolute h-14 w-14 -right-4 -top-4 bg-black-200 text-right rounded-full text-white">
+            S/240.0</div>
+          <div class="text-center flex flex-col"><span>Pollo Brahma Perdiz Dorado</span>
+            <button class="hover:underline">Ver mas</button>
+          </div>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-          <div><img src="/images/pollos/pollo2.jpg" class="rounded-full shadow-xl" width="300px"></div>
-          <div class="text-center"><span>Pollo Brahma Perdiz Dorado</span></div>
+        <div style="display: flex; flex-direction: column; gap: 10px;"
+          class="relative transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
+          <div><img src="/images/default.png" class="rounded-full shadow-xl" width="250px"></div>
+          <div class="absolute h-14 w-14 -right-4 -top-4 bg-black-200 text-right rounded-full text-white">
+            S/240.0</div>
+          <div class="text-center flex flex-col"><span>Pollo Brahma Perdiz Dorado</span>
+            <button class="hover:underline">Ver mas</button>
+          </div>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-          <div><img src="/images/pollos/pollo3.jpg" class="rounded-full shadow-xl" width="195px"></div>
-          <div class="text-center"><span>Pollo Brahma Perdiz Dorado</span></div>
+        <div style="display: flex; flex-direction: column; gap: 10px;"
+          class="relative transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
+          <div><img src="/images/default.png" class="rounded-full shadow-xl" width="250px"></div>
+          <div class="absolute h-14 w-14 -right-4 -top-4 bg-black-200 text-right rounded-full text-white">
+            S/240.0</div>
+          <div class="text-center flex flex-col"><span>Pollo Brahma Perdiz Dorado</span>
+            <button class="hover:underline">Ver mas</button>
+          </div>
         </div>
       </div>
-      <div style="display: flex; flex-direction: row; justify-content: space-between; width: 85%;">
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-          <div><img src="/images/pollos/pollo4.jpg" class="rounded-full shadow-xl" width="190px"></div>
-          <div class="text-center"><span>Pollo Brahma Perdiz Dorado</span></div>
+      <div class="flex flex-row justify-around w-4/5">
+        <div style="display: flex; flex-direction: column; gap: 10px;"
+          class="relative transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
+          <div><img src="/images/default.png" class="rounded-full shadow-xl" width="250px"></div>
+          <div class="absolute h-14 w-14 -right-4 -top-4 bg-black-200 text-right rounded-full text-white">
+            S/240.0</div>
+          <div class="text-center flex flex-col"><span>Pollo Brahma Perdiz Dorado</span>
+            <button class="hover:underline">Ver mas</button>
+          </div>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-          <div><img src="/images/pollos/pollo5.jpg" class="rounded-full shadow-xl" width="190px" ></div>
-          <div class="text-center"><span>Pollo Brahma Perdiz Dorado</span></div>
+        <div style="display: flex; flex-direction: column; gap: 10px;"
+          class="relative transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
+          <div><img src="/images/default.png" class="rounded-full shadow-xl" width="250px"></div>
+          <div class="absolute h-14 w-14 -right-4 -top-4 bg-black-200 text-right rounded-full text-white">
+            S/240.0</div>
+          <div class="text-center flex flex-col"><span>Pollo Brahma Perdiz Dorado</span>
+            <button class="hover:underline">Ver mas</button>
+          </div>
         </div>
-        <div >
-          <div><img src="/images/pollos/pollo6.jpg" class="rounded-full shadow-xl" width="250px"></div>
-          <div class="text-center"><span>Pollo Brahma Perdiz Dorado</span></div>
+        <div style="display: flex; flex-direction: column; gap: 10px;"
+          class="relative transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
+          <div><img src="/images/default.png" class="rounded-full" width="250px"></div>
+          <div class="absolute h-14 w-14 -right-4 -top-4 bg-black-200 text-right rounded-full text-white ">
+            S/240.0</div>
+          <div class="text-center flex flex-col "><span>Pollo Brahma Perdiz Dorado</span>
+            <button class="hover:underline">Ver mas</button>
+
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div #footer >
-    <footer style="display: flex; flex-direction: row; justify-content: center;">
-      <span>Creado por Criaderos Broaster</span>
+  <div #footer>
+    <footer class="mt-32 mb-5 text-center">
+      <span>Creado por <a href="http://www.google.com" class="hover:underline">Criaderos Broaster</a></span>
     </footer>
   </div>
 </div>
